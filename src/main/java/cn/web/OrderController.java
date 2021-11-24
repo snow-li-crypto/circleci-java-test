@@ -3,7 +3,6 @@ package cn.web;
 
 import cn.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +23,7 @@ public class OrderController {
     @ResponseBody
     @RequestMapping(value = "/hello")
     public String hello() {
+        
         orderService.test();
         return "hello work";
     }
