@@ -31,6 +31,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         env:
-          GITHUB_TOKEN: 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  # Needed to get PR information, if any
-          SONAR_TOKEN: cd0ae1ab2da42b36e982f7d812581fb04c0410de
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
