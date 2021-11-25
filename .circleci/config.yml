@@ -6,6 +6,7 @@ orbs:
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+
 slack-alert: &slack-alert
   fail_only: true
   failure_message: ':red_circle: ${CIRCLE_BRANCH}@${CIRCLE_JOB} job has failed!'
