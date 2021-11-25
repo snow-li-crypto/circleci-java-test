@@ -6,6 +6,7 @@ orbs:
   slack: circleci/slack@4.1
 
 
+
 slack-alert: &slack-alert
   fail_only: true
   failure_message: ':red_circle: ${CIRCLE_BRANCH}@${CIRCLE_JOB} job has failed!'
@@ -13,6 +14,11 @@ slack-alert: &slack-alert
   include_project_field: true
   include_visit_job_action: true
   success_message: ':tada: ${CIRCLE_BRANCH}@${CIRCLE_JOB} job has succeeded!'
+
+junit: &junit
+  steps:
+    - slack/status:
+        <<: *slack-alert
 
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
@@ -24,25 +30,31 @@ jobs:
     # Be sure to update the Docker image tag below to openjdk version of your application.
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
     docker:
-      - image: circleci/slack@4.1
+      - image: cimg/openjdk:11.0
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
-      #      - run:
-      #          name: Build
-      #          command: mvn -B -DskipTests clean package
-      #      # Then run your tests!
-      #      - run:
-      #          name: Test·
-      #          command: mvn test
-      #      - run:
-      #          name: Analyze on SonarCloud
-      #          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
+      - run:
+          name: Build
+          command: mvn -B -DskipTests clean package
+      # Then run your tests!
+      - run:
+          name: Test·
+          command: mvn test
+      - run:
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
       - slack/status:
           <<: *slack-alert
+
+  junit:
+    <<: *junit
+    docker:
+      - image: circleci/openjdk:11-jdk
+      - image: circleci/postgres:12.4
 #  notify:
 #    docker:
 #      - image: 'cimg/base:stable'
@@ -72,7 +84,6 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test:
+      - junit:
           context:
             - pay-circleci-alert
-#      - notify:
-#          context: pay-circleci-alert
