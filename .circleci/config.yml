@@ -64,4 +64,4 @@ workflows:
       - build-and-test:
           name: test
       - notify:
-          context: slack-secrets
+          context: pay-circleci-alert
