@@ -8,7 +8,7 @@ version: 2.1
 
 
 slack-alert: &slack-alert
-  fail_only: true
+  fail_only: false
   failure_message: ':red_circle: ${CIRCLE_BRANCH}@${CIRCLE_JOB} job has failed!'
   include_job_number_field: true
   include_project_field: true
