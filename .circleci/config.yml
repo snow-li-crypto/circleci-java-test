@@ -2,24 +2,6 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-orbs:
-  slack: circleci/slack@4.1
-
-
-
-slack-alert: &slack-alert
-  fail_only: true
-  failure_message: ':red_circle: ${CIRCLE_BRANCH}@${CIRCLE_JOB} job has failed!'
-  include_job_number_field: true
-  include_project_field: true
-  include_visit_job_action: true
-  success_message: ':tada: ${CIRCLE_BRANCH}@${CIRCLE_JOB} job has succeeded!'
-
-junit: &junit
-  steps:
-    - slack/status:
-        <<: *slack-alert
-
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -42,40 +24,8 @@ jobs:
           command: mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
-          name: Test·
+          name: Test
           command: mvn test
-      - run:
-          name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
-      - slack/status:
-          <<: *slack-alert
-
-  junit:
-    <<: *junit
-    docker:
-      - image: circleci/openjdk:11-jdk
-      - image: circleci/postgres:12.4
-#  notify:
-#    docker:
-#      - image: 'cimg/base:stable'
-#    steps:
-#      - slack/notify:
-#          custom: |
-#            {
-#              "blocks": [
-#                {
-#                  "type": "section",
-#                  "fields": [
-#                    {
-#                      "type": "plain_text",
-#                      "text": "*This is a text notification*",
-#                      "emoji": true
-#                    }
-#                  ]
-#                }
-#              ]
-#            }
-#          event: always
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -84,6 +34,5 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test:
-      - junit:
-          context:
-            - pay-circleci-alert
+          - content:
+              - pay-circleci-alert
