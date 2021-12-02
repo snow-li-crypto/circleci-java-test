@@ -38,28 +38,28 @@ workflows:
   setup:
     jobs:
       - testing:
-          name: testing
+          name: testing-bulid
           filters:
             branches:
               only:
                 - testing
 
       - staging:
-          name: staging
+          name: staging-bulid
           filters:
             branches:
               only:
                 - staging
 
       - main:
-          name: main
+          name: main-bulid
           filters:
             branches:
               only:
                 - main
 
       - default:
-          name: default
+          name: default-bulid
           filters:
             branches:
               ignore:
