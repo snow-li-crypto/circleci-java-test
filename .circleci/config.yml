@@ -10,10 +10,10 @@ jobs:
     executor: continuation/default
     steps:
       - checkout
-      - run:
-          name: Generate config
-          command: |
-            ./.circleci/config-test.yml > config.yml
+      #      - run:
+      #          name: Generate config
+      #          command: |
+      #            ./.circleci/config-test.yml > config.yml
       - continuation/continue:
           configuration_path: config-test.yml
 
