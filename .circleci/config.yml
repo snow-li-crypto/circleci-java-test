@@ -20,19 +20,47 @@ jobs:
       - continuation/continue:
           configuration_path: ./.circleci/config-test.yml
 
+  main:
+    executor: continuation/default
+    steps:
+      - checkout
+      - continuation/continue:
+          configuration_path: ./.circleci/config-main.yml
+
+  default:
+    executor: continuation/default
+    steps:
+      - checkout
+      - continuation/continue:
+          configuration_path: ./.circleci/config-default.yml
+
 workflows:
   setup:
     jobs:
       - testing:
-          name:
+          name: testing
           filters:
             branches:
               only:
                 - testing
 
       - staging:
-          name:
+          name: staging
           filters:
             branches:
               only:
                 - staging
+
+      - main:
+          name: main
+          filters:
+            branches:
+              only:
+                - main
+
+      - default:
+          name: default
+          filters:
+            branches:
+              only:
+                - default
