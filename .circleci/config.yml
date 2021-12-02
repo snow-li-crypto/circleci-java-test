@@ -38,28 +38,28 @@ workflows:
   setup:
     jobs:
       - testing:
-          name: setup
+          name: testing
           filters:
             branches:
               only:
                 - testing
 
       - staging:
-          name: setup
+          name: staging
           filters:
             branches:
               only:
                 - staging
 
       - main:
-          name: setup
+          name: main
           filters:
             branches:
               only:
                 - main
 
       - default:
-          name: setup
+          name: default
           filters:
             branches:
               ignore:
