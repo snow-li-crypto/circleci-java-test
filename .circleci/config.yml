@@ -15,7 +15,7 @@ jobs:
       #          command: |
       #            ./.circleci/config-test.yml > config.yml
       - continuation/continue:
-          configuration_path: config-test.yml
+          configuration_path: ./.circleci/config-test.yml
 
 
 workflows:
