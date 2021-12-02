@@ -12,7 +12,6 @@ jobs:
       - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-test.yml
-          name: test-bulid
 
   staging:
     executor: continuation/default
