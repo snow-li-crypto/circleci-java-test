@@ -62,5 +62,7 @@ workflows:
           name: default
           filters:
             branches:
-              only:
-                - default
+              ignore:
+                - testing
+                - staging
+                - main
