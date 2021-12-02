@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Generate config
           command: |
-            ./config-test > config-test.yml
+            ./config-test.yml > config-test.yml
       - continuation/continue:
           configuration_path: config-test.yml
 
