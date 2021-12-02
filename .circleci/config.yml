@@ -6,19 +6,33 @@ orbs:
   continuation: circleci/continuation@0.1.2
 
 jobs:
-  setup:
+  testing:
     executor: continuation/default
     steps:
       - checkout
-      #      - run:
-      #          name: Generate config
-      #          command: |
-      #            ./.circleci/config-test.yml > config.yml
       - continuation/continue:
           configuration_path: ./.circleci/config-test.yml
 
+  staging:
+    executor: continuation/default
+    steps:
+      - checkout
+      - continuation/continue:
+          configuration_path: ./.circleci/config-test.yml
 
 workflows:
   setup:
     jobs:
-      - setup
+      - testing:
+          name:
+          filters:
+            branches:
+              only:
+                - develop
+
+      - staging:
+          name:
+          filters:
+            branches:
+              only:
+                - staging
