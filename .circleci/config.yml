@@ -12,13 +12,14 @@ jobs:
       - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-test.yml
+          name: test-bulid
 
   staging:
     executor: continuation/default
     steps:
       - checkout
       - continuation/continue:
-          configuration_path: ./.circleci/config-test.yml
+          configuration_path: ./.circleci/config-staging.yml
 
   main:
     executor: continuation/default
@@ -38,28 +39,28 @@ workflows:
   setup:
     jobs:
       - testing:
-          name: testing
+          name: setup
           filters:
             branches:
               only:
                 - testing
 
       - staging:
-          name: staging
+          name: setup
           filters:
             branches:
               only:
                 - staging
 
       - main:
-          name: main
+          name: setup
           filters:
             branches:
               only:
                 - main
 
       - default:
-          name: default
+          name: setup
           filters:
             branches:
               ignore:
