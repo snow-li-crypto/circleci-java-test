@@ -42,10 +42,10 @@ jobs:
       # Checkout the code as the first step.
       - checkout
 
-      #      - run:
-      #          name: Setup PSQL Databases
-      #          command: |
-      #            sudo apt install -y postgresql-client
+      - run:
+          name: Setup PSQL Databases
+          command: |
+            sudo apt install -y postgresql-client
 
       # Use mvn clean and package as the standard maven build phase
       #      - run:
