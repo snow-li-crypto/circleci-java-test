@@ -34,23 +34,23 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
-      - run:
-          name: Update system
-          command: |
-            sudo apt update
-            sudo apt upgrade
+      #      - run:
+      #          name: Update system
+      #          command: |
+      #            sudo apt update
+      #            sudo apt upgrade
       # Checkout the code as the first step.
       - checkout
 
-      - run:
-          name: Setup PSQL Databases
-          command: |
-            sudo apt install -y postgresql-client
+      #      - run:
+      #          name: Setup PSQL Databases
+      #          command: |
+      #            sudo apt install -y postgresql-client
 
       # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
+      #      - run:
+      #          name: Build
+      #          command: mvn -B -DskipTests clean package
       # Then run your tests!
       #      - run:
       #          name: Test
