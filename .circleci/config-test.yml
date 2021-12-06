@@ -56,8 +56,12 @@ jobs:
           name: Test
           command: mvn test
 
-      - slack/status:
-          <<: *slack-alert
+      - run:
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
+
+#      - slack/status:
+#          <<: *slack-alert
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
