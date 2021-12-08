@@ -58,12 +58,8 @@ jobs:
 
       - run:
           name: Analyze on SonarCloud
-          command: pwd
-      #          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
+          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
 
-      - run:
-          name: Analyze on SonarCloud
-          command: ls
 
 #      - slack/status:
 #          <<: *slack-alert
