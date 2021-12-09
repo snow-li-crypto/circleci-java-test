@@ -62,10 +62,10 @@ jobs:
             mv ./lib/pay.zip ~/.m2/repository/com/crypto
             unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
 
-      #      - run:
-      #          name: Setup PSQL Databases
-      #          command: |
-      #            sudo apt install -y postgresql-client
+      - run:
+          name: Setup PSQL Databases
+          command: |
+            sudo apt install -y postgresql-client
 
       # Use mvn clean and package as the standard maven build phase
       #      - run:
