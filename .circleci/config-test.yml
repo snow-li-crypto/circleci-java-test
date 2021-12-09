@@ -40,7 +40,7 @@ jobs:
           command: |
             mkdir archetypes-build
             cd archetypes-build
-            git clone https://oauth2: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@github.com/snow-li-crypto/crypto-pay-java-archetypes.git
+            git clone https://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@github.com/snow-li-crypto/crypto-pay-java-archetypes.git
             cd crypto-pay-java-archetypes
             cd crypto-pay-parent&&mvn install && cd ..
             cd crypto-pay-components&&mvn install
