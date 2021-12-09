@@ -45,11 +45,10 @@ jobs:
       #            cd crypto-pay-java-archetypes
       #            cd crypto-pay-parent&&mvn install && cd ..
       #            cd crypto-pay-components&&mvn install
-      #      - run:
-      #          name: Update system
-      #          command: |
-      #            sudo apt update
-      #            sudo apt upgrade
+      - run:
+          name: Update system
+          command: |
+            sudo apt update
 
 
       # Checkout the code as the first step.
