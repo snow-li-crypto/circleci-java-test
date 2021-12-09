@@ -51,14 +51,15 @@ jobs:
       #            sudo apt update
       #            sudo apt upgrade
 
+
+      # Checkout the code as the first step.
+      - checkout
+
       - run:
           command: |
             mkdir -p ~/.m2/repository/com/crypto
             mv ./lib/pay.zip ~/.m2/repository/com/crypto
             unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
-
-      # Checkout the code as the first step.
-      - checkout
 
       #      - run:
       #          name: Setup PSQL Databases
