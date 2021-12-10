@@ -18,69 +18,40 @@ slack-alert: &slack-alert
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:
-    # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
-    # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # Be sure to update the Docker image tag below to openjdk version of your application.
-    # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
+
+  init-evn-job:
+    name: 初始化基础环境
+    working_directory: ~/env/
     docker:
       - image: cimg/openjdk:11.0
       - image: circleci/postgres:12.4
-        environment:
-          POSTGRES_DB: account
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+          environment:
+            POSTGRES_DB: account
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
     steps:
-
-      #      - run:
-      #          name: init archetypes
-      #          command: |
-      #            mkdir archetypes-build
-      #            cd archetypes-build
-      #            git clone https://github.com/Coveros/helloworld.git hello
-      #            git clone https://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@github.com/snow-li-crypto/crypto-pay-java-archetypes.git
-      #            cd crypto-pay-java-archetypes
-      #            cd crypto-pay-parent&&mvn install && cd ..
-      #            cd crypto-pay-components&&mvn install
       - run:
-          name: Update system
-          command: |
-            sudo apt update
-
+        name: 更新系统 安装pg数据库
+        command: |
+          sudo apt update
+          sudo apt install -y postgresql-client
 
       # Checkout the code as the first step.
       - checkout
 
       - run:
+          name: 初始化本地maven依赖
           command: |
             mkdir -p ~/.m2/repository/com/crypto
             ls -a
             mv ./lib/pay.zip ~/.m2/repository/com/crypto
             unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
 
-      - run:
-          name: Setup PSQL Databases
-          command: |
-            sudo apt install -y postgresql-client
 
-      # Use mvn clean and package as the standard maven build phase
-      #      - run:
-      #          name: Build
-      #          command: mvn -B -DskipTests clean package
-      # Then run your tests!
-      #      - run:
-      #          name: Test
-      #          command: mvn test
-
-      #      - run:
-      #          name: The First Step
-      #          command: |
-      #            echo 'Hello World!'
-      #            echo 'This is the delivery pipeline'
-      #            ls -a
+  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
+  build-and-test:
+    working_directory: ~/env/
+    steps:
       - run:
           name: Analyze on SonarCloud
           command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
@@ -95,6 +66,11 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
+      - init-evn-job:
+          name: init-env
       - build-and-test:
+          name:
+          requires:
+            - init-env
           context:
             - pay-circleci-alert
