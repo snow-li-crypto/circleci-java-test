@@ -6,6 +6,12 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/openjdk:11.0
+      - image: circleci/postgres:12.4
+        environment:
+          POSTGRES_DB: account
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
     steps:
       - checkout
       - run:
