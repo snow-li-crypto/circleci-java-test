@@ -6,33 +6,45 @@ orbs:
   continuation: circleci/continuation@0.1.2
 
 jobs:
+
+  checkout-job:
+    working_directory: ~/env/
+    steps:
+      - checkout
+
   testing:
     executor: continuation/default
     steps:
+      - checkout
       - continuation/continue:
-          configuration_path: ./.circleci/config-test.yml
+          configuration_path: ~/env/.circleci/config-test.yml
 
   staging:
     executor: continuation/default
     steps:
+      - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-staging.yml
 
   main:
     executor: continuation/default
     steps:
+      - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-main.yml
 
   default:
     executor: continuation/default
     steps:
+      - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-default.yml
 
 workflows:
   setup:
     jobs:
+      - checkout-job:
+
       - testing:
           name: testing-bulid
           filters:
