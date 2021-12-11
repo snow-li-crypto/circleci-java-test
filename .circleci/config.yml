@@ -10,7 +10,6 @@ jobs:
   checkout-job:
     docker:
       - image: cimg/openjdk:11.0
-    working_directory: ~/env/
     steps:
       - checkout
 
@@ -45,7 +44,7 @@ jobs:
 workflows:
   setup:
     jobs:
-      - checkout-job:
+      - checkout-job
 
       - testing:
           name: testing-bulid
