@@ -18,8 +18,8 @@ slack-alert: &slack-alert
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-
-  init-evn-job:
+  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
+  build-and-test:
     # These next lines define a Docker executor: https://circleci.com/docs/2.0/executor-types/
     # You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # Be sure to update the Docker image tag below to openjdk version of your application.
@@ -39,43 +39,7 @@ jobs:
       - run:
           name: Test
           command: mvn test
-  #    name: 初始化基础环境
-  #    working_directory: ~/env/
-  #    docker:
-  #      - image: cimg/openjdk:11.0
-  #      - image: circleci/postgres:12.4
-  #        environment:
-  #          POSTGRES_DB: account
-  #          POSTGRES_USER: postgres
-  #          POSTGRES_PASSWORD: postgres
-  #    steps:
-  #      - run:
-  #          command: |
-  #            sudo apt update
-  #            sudo apt install -y postgresql-client
 
-  #      # Checkout the code as the first step.
-  #      - checkout
-  #
-  #      - run:
-  #          command: |
-  #            mkdir -p ~/.m2/repository/com/crypto
-  #            ls -a
-  #            mv ./lib/pay.zip ~/.m2/repository/com/crypto
-  #            unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
-
-
-  # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-#  build-and-test:
-#    working_directory: ~/env/
-#    steps:
-#      - run:
-#          name: Analyze on SonarCloud
-#          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
-
-
-#      - slack/status:
-#          <<: *slack-alert
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -83,11 +47,4 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - init-evn-job:
-#          name: init-env
-#      - build-and-test:
-#          name: bulid
-#          requires:
-#            - init-env
-#          context:
-#            - pay-circleci-alert
+      - build-and-test:
