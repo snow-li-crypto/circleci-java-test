@@ -12,16 +12,15 @@ jobs:
       - image: cimg/openjdk:11.0
     working_directory: ~/app/
     steps:
-      - run: ls -A1
       - checkout
 
   testing:
     executor: continuation/default
     working_directory: ~/app/
     steps:
-      - run: ls -A1
+      - run: echo "todo"
       - continuation/continue:
-          configuration_path: .circleci/config-test.yml
+          configuration_path: /tmp/circleci/.circleci/config-test.yml
 
   staging:
     executor: continuation/default
