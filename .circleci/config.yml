@@ -20,7 +20,7 @@ jobs:
     steps:
       - checkout
       - continuation/continue:
-          configuration_path: ~/env/.circleci/config-test.yml
+          configuration_path: /home/circleci/project/.circleci/config-test.yml
 
   staging:
     executor: continuation/default
