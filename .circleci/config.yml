@@ -8,12 +8,11 @@ orbs:
 jobs:
 
   checkout-job:
-    working_directory: ~/env/
     docker:
       - image: cimg/openjdk:11.0
     steps:
       - run: |
-          ls
+          ls /home/
       - checkout
 
   testing:
