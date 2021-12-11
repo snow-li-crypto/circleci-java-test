@@ -5,6 +5,13 @@ setup: true
 orbs:
   continuation: circleci/continuation@0.1.2
 
+
+commands:
+  checkout-cmd:
+    steps:
+      - checkout
+
+
 jobs:
 
   checkout-job:
@@ -12,14 +19,13 @@ jobs:
       - image: cimg/openjdk:11.0
     #    working_directory: ~/app/
     steps:
-      - checkout
-      - run: ls -A1 /home/circleci/project
+      - checkout-cmd
 
   testing:
     executor: continuation/default
     #    working_directory: ~/app/
     steps:
-      - run: ls -A1 /home/circleci/project
+      - checkout-cmd
       - continuation/continue:
           configuration_path: /tmp/circleci/.circleci/config-test.yml
 
