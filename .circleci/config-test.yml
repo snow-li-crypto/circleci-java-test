@@ -40,7 +40,7 @@ jobs:
       - checkout
 
       - run:
-          name: 初始化本地maven依赖
+        name: 初始化本地maven依赖
           command: |
             mkdir -p ~/.m2/repository/com/crypto
             ls -a
@@ -53,7 +53,7 @@ jobs:
     working_directory: ~/env/
     steps:
       - run:
-          name: Analyze on SonarCloud
+        name: Analyze on SonarCloud
           command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
 
 
@@ -69,7 +69,7 @@ workflows:
       - init-evn-job:
           name: init-env
       - build-and-test:
-          name:
+          name: bulid
           requires:
             - init-env
 #          context:
