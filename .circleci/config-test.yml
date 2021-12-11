@@ -31,21 +31,21 @@ jobs:
           POSTGRES_PASSWORD: postgres
     steps:
       - run:
-        name: 更新系统 安装pg数据库
-        command: |
-          sudo apt update
-          sudo apt install -y postgresql-client
+          name: 更新系统 安装pg数据库
+          command: |
+            sudo apt update
+            sudo apt install -y postgresql-client
 
       # Checkout the code as the first step.
       - checkout
 
       - run:
-        name: 初始化本地maven依赖
-        command: |
-          mkdir -p ~/.m2/repository/com/crypto
-          ls -a
-          mv ./lib/pay.zip ~/.m2/repository/com/crypto
-          unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
+          name: 初始化本地maven依赖
+          command: |
+            mkdir -p ~/.m2/repository/com/crypto
+            ls -a
+            mv ./lib/pay.zip ~/.m2/repository/com/crypto
+            unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
 
 
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
@@ -53,8 +53,8 @@ jobs:
     working_directory: ~/env/
     steps:
       - run:
-        name: Analyze on SonarCloud
-        command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
 
 
 #      - slack/status:
