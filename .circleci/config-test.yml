@@ -13,10 +13,7 @@ jobs:
           POSTGRES_PASSWORD: postgres
 
     steps:
-      - checkout
-      - run:
-          name: Build
-          command: ls
+      checkout-cmd
 
 workflows:
   setup:

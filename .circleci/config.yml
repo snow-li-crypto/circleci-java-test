@@ -14,13 +14,6 @@ commands:
 
 jobs:
 
-  checkout-job:
-    docker:
-      - image: cimg/openjdk:11.0
-    #    working_directory: ~/app/
-    steps:
-      - checkout-cmd
-
   testing:
     executor: continuation/default
     #    working_directory: ~/app/
@@ -50,9 +43,6 @@ jobs:
 workflows:
   setup:
     jobs:
-      - checkout-job:
-          name: checkout
-
       - testing:
           name: testing-bulid
           requires:
