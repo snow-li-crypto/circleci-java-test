@@ -13,13 +13,13 @@ jobs:
     working_directory: ~/app/
     steps:
       - checkout
-      - run: ls -A1 /home
+      - run: ls -A1 /home/circleci
 
   testing:
     executor: continuation/default
     working_directory: ~/app/
     steps:
-      - run: ls -A1 /
+      - run: ls -A1 /home/circleci
       - continuation/continue:
           configuration_path: /tmp/circleci/.circleci/config-test.yml
 
