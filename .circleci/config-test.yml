@@ -65,7 +65,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - init-evn-job:
-          name: init-env
+#          name: init-env
 #      - build-and-test:
 #          name: bulid
 #          requires:
