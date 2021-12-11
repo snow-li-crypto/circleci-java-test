@@ -54,7 +54,7 @@ jobs:
     steps:
       - run:
         name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
+        command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
 
 
 #      - slack/status:
