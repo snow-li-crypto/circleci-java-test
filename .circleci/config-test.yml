@@ -20,7 +20,7 @@ slack-alert: &slack-alert
 jobs:
 
   init-evn-job:
-    name: 初始化基础环境
+    #    name: 初始化基础环境
     working_directory: ~/env/
     docker:
       - image: cimg/openjdk:11.0
