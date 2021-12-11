@@ -27,7 +27,7 @@ jobs:
     steps:
       - checkout-cmd
       - continuation/continue:
-          configuration_path: /tmp/circleci/.circleci/config-test.yml
+          configuration_path: .circleci/config-test.yml
 
   staging:
     executor: continuation/default
