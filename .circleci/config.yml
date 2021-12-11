@@ -45,8 +45,6 @@ workflows:
     jobs:
       - testing:
           name: testing-bulid
-          requires:
-            - checkout
           filters:
             branches:
               only:
