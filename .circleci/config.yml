@@ -10,14 +10,14 @@ jobs:
   checkout-job:
     docker:
       - image: cimg/openjdk:11.0
-    working_directory: ~/app/
+    #    working_directory: ~/app/
     steps:
       - checkout
       - run: ls -A1 /home/circleci/project
 
   testing:
     executor: continuation/default
-    working_directory: ~/app/
+    #    working_directory: ~/app/
     steps:
       - run: ls -A1 /home/circleci/project
       - continuation/continue:
