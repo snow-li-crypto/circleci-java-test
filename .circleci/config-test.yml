@@ -72,5 +72,5 @@ workflows:
           name:
           requires:
             - init-env
-          context:
-            - pay-circleci-alert
+#          context:
+#            - pay-circleci-alert
