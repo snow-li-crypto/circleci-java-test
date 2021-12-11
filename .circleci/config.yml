@@ -40,10 +40,13 @@ jobs:
 workflows:
   setup:
     jobs:
-      - checkout-job
+      - checkout-job:
+          name: checkout
 
       - testing:
           name: testing-bulid
+          requires:
+            - checkout
           filters:
             branches:
               only:
