@@ -20,20 +20,20 @@ slack-alert: &slack-alert
 jobs:
 
   init-evn-job:
-    #    name: 初始化基础环境
-    working_directory: ~/env/
-    docker:
-      - image: cimg/openjdk:11.0
-    #      - image: circleci/postgres:12.4
-    #        environment:
-    #          POSTGRES_DB: account
-    #          POSTGRES_USER: postgres
-    #          POSTGRES_PASSWORD: postgres
-    steps:
-      - run:
-          command: |
-            sudo apt update
-            sudo apt install -y postgresql-client
+  #    name: 初始化基础环境
+  #    working_directory: ~/env/
+  #    docker:
+  #      - image: cimg/openjdk:11.0
+  #      - image: circleci/postgres:12.4
+  #        environment:
+  #          POSTGRES_DB: account
+  #          POSTGRES_USER: postgres
+  #          POSTGRES_PASSWORD: postgres
+  #    steps:
+  #      - run:
+  #          command: |
+  #            sudo apt update
+  #            sudo apt install -y postgresql-client
 
   #      # Checkout the code as the first step.
   #      - checkout
