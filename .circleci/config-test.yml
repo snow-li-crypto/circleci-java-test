@@ -41,11 +41,11 @@ jobs:
 
       - run:
         name: 初始化本地maven依赖
-          command: |
-            mkdir -p ~/.m2/repository/com/crypto
-            ls -a
-            mv ./lib/pay.zip ~/.m2/repository/com/crypto
-            unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
+        command: |
+          mkdir -p ~/.m2/repository/com/crypto
+          ls -a
+          mv ./lib/pay.zip ~/.m2/repository/com/crypto
+          unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
 
 
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
