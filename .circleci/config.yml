@@ -13,7 +13,7 @@ jobs:
     working_directory: ~/app/
     steps:
       - checkout
-      - run: ls -A1 /
+      - run: ls -A1 /home
 
   testing:
     executor: continuation/default
