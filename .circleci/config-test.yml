@@ -49,12 +49,12 @@ jobs:
 
 
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
-  build-and-test:
-    working_directory: ~/env/
-    steps:
-      - run:
-          name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
+#  build-and-test:
+#    working_directory: ~/env/
+#    steps:
+#      - run:
+#          name: Analyze on SonarCloud
+#          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
 
 
 #      - slack/status:
@@ -68,9 +68,9 @@ workflows:
     jobs:
       - init-evn-job:
           name: init-env
-      - build-and-test:
-          name: bulid
-          requires:
-            - init-env
+#      - build-and-test:
+#          name: bulid
+#          requires:
+#            - init-env
 #          context:
 #            - pay-circleci-alert
