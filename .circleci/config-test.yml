@@ -31,7 +31,6 @@ jobs:
           POSTGRES_PASSWORD: postgres
     steps:
       - run:
-          name: 更新系统 安装pg数据库
           command: |
             sudo apt update
             sudo apt install -y postgresql-client
@@ -40,7 +39,6 @@ jobs:
       - checkout
 
       - run:
-          name: 初始化本地maven依赖
           command: |
             mkdir -p ~/.m2/repository/com/crypto
             ls -a
