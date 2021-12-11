@@ -24,26 +24,26 @@ jobs:
     working_directory: ~/env/
     docker:
       - image: cimg/openjdk:11.0
-      - image: circleci/postgres:12.4
-        environment:
-          POSTGRES_DB: account
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+    #      - image: circleci/postgres:12.4
+    #        environment:
+    #          POSTGRES_DB: account
+    #          POSTGRES_USER: postgres
+    #          POSTGRES_PASSWORD: postgres
     steps:
       - run:
           command: |
             sudo apt update
             sudo apt install -y postgresql-client
 
-      # Checkout the code as the first step.
-      - checkout
-
-      - run:
-          command: |
-            mkdir -p ~/.m2/repository/com/crypto
-            ls -a
-            mv ./lib/pay.zip ~/.m2/repository/com/crypto
-            unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
+  #      # Checkout the code as the first step.
+  #      - checkout
+  #
+  #      - run:
+  #          command: |
+  #            mkdir -p ~/.m2/repository/com/crypto
+  #            ls -a
+  #            mv ./lib/pay.zip ~/.m2/repository/com/crypto
+  #            unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
 
 
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
