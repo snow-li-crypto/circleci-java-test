@@ -12,8 +12,8 @@ jobs:
       - image: cimg/openjdk:11.0
     working_directory: ~/app/
     steps:
-      - run: ls -A1 /
       - checkout
+      - run: ls -A1 /
 
   testing:
     executor: continuation/default
