@@ -11,35 +11,29 @@ jobs:
     docker:
       - image: cimg/openjdk:11.0
     steps:
-      - run: |
-          ls /home/
       - checkout
 
   testing:
     executor: continuation/default
     steps:
-      - checkout
       - continuation/continue:
           configuration_path: /home/circleci/project/.circleci/config-test.yml
 
   staging:
     executor: continuation/default
     steps:
-      - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-staging.yml
 
   main:
     executor: continuation/default
     steps:
-      - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-main.yml
 
   default:
     executor: continuation/default
     steps:
-      - checkout
       - continuation/continue:
           configuration_path: ./.circleci/config-default.yml
 
