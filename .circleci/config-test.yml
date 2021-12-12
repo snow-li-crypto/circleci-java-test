@@ -35,4 +35,5 @@ jobs:
 workflows:
   setup:
     jobs:
-      - build-and-test
+      - build-and-test:
+          name: bulid
