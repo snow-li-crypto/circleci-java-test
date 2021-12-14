@@ -7,6 +7,20 @@ orbs:
 version: 2.1
 
 
+commands:
+  jfrog-cmd:
+    steps:
+      # Install JFrog CLI
+      - curl -fL https://getcli.jfrog.io | sh
+      # Configure Artifactory instance with JFrog CLI
+      - ./jfrog config add artifactory --artifactory-url $ARTIFACTORY_URL --user $ARTIFACTORY_USERNAME --password $ARTIFACTORY_PASSWORD --interactive=false
+      # Set the M2_HOME environment variable
+      - export M2_HOME=/usr/share/maven
+      # Replace the repository name in the configuration.yml to the correct one.
+      - sed -i 's,MAVEN_SNAPSHOT_REPO_KEY,'"$MAVEN_SNAPSHOT_REPO_KEY"',g' configuration.yml
+      - sed -i 's,MAVEN_RELEASE_REPO_KEY,'"$MAVEN_RELEASE_REPO_KEY"',g' configuration.yml
+
+
 slack-alert: &slack-alert
   fail_only: false
   failure_message: ':red_circle: ${CIRCLE_BRANCH}@${CIRCLE_JOB} job has failed!'
@@ -31,6 +45,7 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      - jfrog-cmd
       # Use mvn clean and package as the standard maven build phase
       - run:
           name: Build
