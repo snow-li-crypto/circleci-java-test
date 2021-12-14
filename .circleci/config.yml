@@ -34,6 +34,12 @@ jobs:
       - continuation/continue:
           configuration_path: ./.circleci/config-main.yml
 
+  jfrog:
+    executor: continuation/default
+    steps:
+      - continuation/continue:
+          configuration_path: ./.circleci/config-jfrog.yml
+
   default:
     executor: continuation/default
     steps:
@@ -63,6 +69,13 @@ workflows:
             branches:
               only:
                 - main
+
+      - jfrog:
+          name: jfrog-bulid
+          filters:
+            branches:
+              only:
+                - jfrog
 
       - default:
           name: default-bulid
