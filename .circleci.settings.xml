@@ -10,6 +10,23 @@
     </server>
   </servers>
   <profiles>
+
+    <profile>
+      <id>aliyun</id>
+      <repositories>
+        <repository>
+          <id>aliyun</id>
+          <url>https://maven.aliyun.com/repository/public</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+
     <profile>
       <repositories>
         <repository>
@@ -55,6 +72,7 @@
     </profile>
   </profiles>
   <activeProfiles>
+    <activeProfile>aliyun</activeProfile>
     <activeProfile>artifactory</activeProfile>
   </activeProfiles>
 </settings>
