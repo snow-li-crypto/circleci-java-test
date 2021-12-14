@@ -17,6 +17,19 @@
     </sonar.coverage.jacoco.xmlReportPaths>
   </properties>
 
+  <distributionManagement>
+    <repository>
+      <id>central-jfrog</id>
+      <name>monacohq-artifactory-primary-0-releases</name>
+      <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven-dev</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots-jfrog</id>
+      <name>monacohq-artifactory-primary-0-snapshots</name>
+      <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven-dev</url>
+    </snapshotRepository>
+  </distributionManagement>
+
 
   <dependencies>
 
