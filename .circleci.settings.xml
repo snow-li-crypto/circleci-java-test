@@ -10,17 +10,24 @@
       <id>central</id>
     </server>
   </servers>
-  <mirrors>
 
+  <mirrors>
+    <mirror>
+      <id>planetmirror.com</id>
+      <name>PlanetMirror Australia</name>
+      <url>http://downloads.planetmirror.com/pub/maven2</url>
+      <mirrorOf>maven</mirrorOf>
+    </mirror>
   </mirrors>
+
   <profiles>
 
     <profile>
-      <id>aliyun</id>
+      <id>maven-repo1</id>
       <repositories>
         <repository>
-          <id>aliyun</id>
-          <url>https://maven.aliyun.com/repository/public</url>
+          <id>maven</id>
+          <url>https://repo1.maven.org/maven2</url>
           <releases>
             <enabled>true</enabled>
           </releases>
@@ -46,7 +53,7 @@
     </profile>
   </profiles>
   <activeProfiles>
-    <activeProfile>aliyun</activeProfile>
+    <activeProfile>maven-repo1</activeProfile>
     <activeProfile>monacohq</activeProfile>
   </activeProfiles>
 </settings>
