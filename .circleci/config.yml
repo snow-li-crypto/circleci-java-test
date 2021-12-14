@@ -85,3 +85,4 @@ workflows:
                 - testing
                 - staging
                 - main
+                - jfrog
