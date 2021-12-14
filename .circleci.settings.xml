@@ -8,6 +8,12 @@
       <username>${env.ARTIFACTORY_USERNAME}</username>
       <password>${env.ARTIFACTORY_APIKEY}</password>
     </server>
+
+    <server>
+      <username>crypto-pay-ci-user</username>
+      <password>.......</password>
+      <id>snapshots</id>
+    </server>
   </servers>
   <profiles>
 
