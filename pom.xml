@@ -17,17 +17,6 @@
     </sonar.coverage.jacoco.xmlReportPaths>
   </properties>
 
-  <repositories>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>crypto-pay-maven</name>
-      <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven</url>
-    </repository>
-  </repositories>
-
 
   <dependencies>
 
