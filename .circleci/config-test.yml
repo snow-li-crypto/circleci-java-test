@@ -9,7 +9,6 @@ commands:
       - run:
           command: |
             mkdir -p ~/.m2/repository/com/crypto
-            ls -a
             mv ./lib/pay.zip ~/.m2/repository/com/crypto
             unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
 
