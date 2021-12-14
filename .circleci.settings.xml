@@ -2,19 +2,17 @@
 <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd"
   xmlns="http://maven.apache.org/SETTINGS/1.2.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
   <servers>
     <server>
+      <username>snow.li@crypto.com</username>
+      <password>AKCp8k93Et6aQmCxiUKMSnqYiUhs5GU3rN1Fcb39TQveSXHYtmJQ8DV2XoxaiAsBJGoNdq21r</password>
       <id>central</id>
-      <username>${env.ARTIFACTORY_USERNAME}</username>
-      <password>${env.ARTIFACTORY_APIKEY}</password>
-    </server>
-
-    <server>
-      <username>crypto-pay-ci-user</username>
-      <password>.......</password>
-      <id>snapshots</id>
     </server>
   </servers>
+  <mirrors>
+
+  </mirrors>
   <profiles>
 
     <profile>
@@ -39,46 +37,16 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
-          <id>mvn-central</id>
-          <name>Maven Repository Switchboard</name>
-          <url>http://repo1.maven.org/maven2</url>
-        </repository>
-        <repository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
           <id>central</id>
           <name>crypto-pay-maven</name>
-          <url>https://monacohq.jfrog.io/artifactory/crypto-pay-maven</url>
-        </repository>
-        <repository>
-          <snapshots/>
-          <id>snapshots</id>
-          <name>crypto-pay-maven</name>
-          <url>https://monacohq.jfrog.io/artifactory/crypto-pay-maven</url>
+          <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven</url>
         </repository>
       </repositories>
-      <pluginRepositories>
-        <pluginRepository>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-          <id>central</id>
-          <name>crypto-pay-maven</name>
-          <url>https://monacohq.jfrog.io/artifactory/crypto-pay-maven</url>
-        </pluginRepository>
-        <pluginRepository>
-          <snapshots/>
-          <id>snapshots</id>
-          <name>crypto-pay-maven</name>
-          <url>https://monacohq.jfrog.io/artifactory/crypto-pay-maven</url>
-        </pluginRepository>
-      </pluginRepositories>
-      <id>artifactory</id>
+      <id>monacohq</id>
     </profile>
   </profiles>
   <activeProfiles>
     <activeProfile>aliyun</activeProfile>
-    <activeProfile>artifactory</activeProfile>
+    <activeProfile>monacohq</activeProfile>
   </activeProfiles>
 </settings>
