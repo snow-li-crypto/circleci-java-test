@@ -48,13 +48,13 @@ jobs:
 
       - run:
           name: settings
-          command: mvn -s .circleci.settings.xml -DskipTests deploy
+          command: mvn -s .circleci.settings.xml -DskipTests package
 
       #      - jfrog-cmd
       # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: Build
-          command: mvn -B -DskipTests clean package
+      #      - run:
+      #          name: Build
+      #          command: mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
           name: Test
