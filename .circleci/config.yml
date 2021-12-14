@@ -25,24 +25,28 @@ jobs:
   staging:
     executor: continuation/default
     steps:
+      - checkout-cmd
       - continuation/continue:
           configuration_path: ./.circleci/config-staging.yml
 
   main:
     executor: continuation/default
     steps:
+      - checkout-cmd
       - continuation/continue:
           configuration_path: ./.circleci/config-main.yml
 
   jfrog:
     executor: continuation/default
     steps:
+      - checkout-cmd
       - continuation/continue:
           configuration_path: ./.circleci/config-jfrog.yml
 
   default:
     executor: continuation/default
     steps:
+      - checkout-cmd
       - continuation/continue:
           configuration_path: ./.circleci/config-default.yml
 
