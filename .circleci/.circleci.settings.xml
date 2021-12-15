@@ -6,8 +6,10 @@
 
   <servers>
     <server>
-      <username>snow.li@crypto.com</username>
-      <password>AKCp8k93Et6aQmCxiUKMSnqYiUhs5GU3rN1Fcb39TQveSXHYtmJQ8DV2XoxaiAsBJGoNdq21r</password>
+      <username>${env.ARTIFACTORY_USERNAME}</username>
+      <password>${env.ARTIFACTORY_APIKEY}</password>
+      <!--      <username>snow.li@crypto.com</username>-->
+      <!--      <password>AKCp8k93Et6aQmCxiUKMSnqYiUhs5GU3rN1Fcb39TQveSXHYtmJQ8DV2XoxaiAsBJGoNdq21r</password>-->
       <id>central</id>
     </server>
   </servers>
