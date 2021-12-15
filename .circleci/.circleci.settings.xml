@@ -3,6 +3,7 @@
   xmlns="http://maven.apache.org/SETTINGS/1.2.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+
   <servers>
     <server>
       <username>snow.li@crypto.com</username>
@@ -10,35 +11,24 @@
       <id>central</id>
     </server>
   </servers>
-
   <mirrors>
-    <mirror>
-      <id>planetmirror.com</id>
-      <name>PlanetMirror Australia</name>
-      <url>http://downloads.planetmirror.com/pub/maven2</url>
-      <mirrorOf>maven</mirrorOf>
-    </mirror>
-  </mirrors>
 
+  </mirrors>
   <profiles>
 
     <profile>
-      <id>maven-repo1</id>
+      <id>maven2</id>
       <repositories>
         <repository>
-          <id>maven</id>
-          <url>https://repo1.maven.org/maven2</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>
-          </snapshots>
+          <id>maven2</id>
+          <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
       </repositories>
     </profile>
 
     <profile>
+      <id>monacohq</id>
+
       <repositories>
         <repository>
           <snapshots>
@@ -49,11 +39,11 @@
           <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven</url>
         </repository>
       </repositories>
-      <id>monacohq</id>
+
     </profile>
   </profiles>
   <activeProfiles>
-    <activeProfile>maven-repo1</activeProfile>
+    <activeProfile>maven2</activeProfile>
     <activeProfile>monacohq</activeProfile>
   </activeProfiles>
 </settings>

@@ -63,8 +63,12 @@ jobs:
       #          command: mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
-          name: Test
-          command: mvn -s .circleci/.circleci.settings.xml test
+          name: install
+          command: mvn -s .circleci/.circleci.settings.xml install -Dmaven.test.skip=true
+      - run:
+          name: deploy to jfrog
+          command: mvn deploy -s .circleci/.circleci.settings.xml -DaltDeploymentRepository=monacohq-releases::default::https://monacohq.jfrog.io/monacohq/crypto-pay-maven-dev -Dmaven.test.skip=true
+
 
 
 # Invoke jobs via workflows
