@@ -63,6 +63,11 @@ jobs:
       #          command: mvn -B -DskipTests clean package
       # Then run your tests!
       - run:
+          command: |
+            echo "test"
+            echo ${ARTIFACTORY_USERNAME}
+
+      - run:
           name: install
           command: mvn -s .circleci/.circleci.settings.xml install -Dmaven.test.skip=true
       - run:
