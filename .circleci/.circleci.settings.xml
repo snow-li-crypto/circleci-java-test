@@ -6,10 +6,8 @@
 
   <servers>
     <server>
-      <username>${env.ARTIFACTORY_USERNAME}</username>
-      <password>${env.ARTIFACTORY_APIKEY}</password>
-      <!--      <username>snow.li@crypto.com</username>-->
-      <!--      <password>AKCp8k93Et6aQmCxiUKMSnqYiUhs5GU3rN1Fcb39TQveSXHYtmJQ8DV2XoxaiAsBJGoNdq21r</password>-->
+      <username>${ARTIFACTORY_USERNAME}</username>
+      <password>${ARTIFACTORY_APIKEY}</password>
       <id>central</id>
     </server>
   </servers>
@@ -37,8 +35,8 @@
             <enabled>false</enabled>
           </snapshots>
           <id>central</id>
-          <name>crypto-pay-maven</name>
-          <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven</url>
+          <name>crypto-pay-maven-dev</name>
+          <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven-dev</url>
         </repository>
       </repositories>
 
