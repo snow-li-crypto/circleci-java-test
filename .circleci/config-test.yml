@@ -13,7 +13,6 @@ commands:
             mv ./lib/pay.zip ~/.m2/repository/com/crypto
             unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
 
-
 jobs:
   build-and-test:
     docker:
