@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd"
+  xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <servers>
+    <server>
+      <username>snow.li@crypto.com</username>
+      <password>AKCp8k93Et6aQmCxiUKMSnqYiUhs5GU3rN1Fcb39TQveSXHYtmJQ8DV2XoxaiAsBJGoNdq21r</password>
+      <id>central</id>
+    </server>
+  </servers>
+  <mirrors>
+
+  </mirrors>
+  <profiles>
+
+    <profile>
+      <id>maven2</id>
+      <repositories>
+        <repository>
+          <id>maven2</id>
+          <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+      </repositories>
+    </profile>
+
+    <profile>
+      <id>monacohq</id>
+
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>crypto-pay-maven</name>
+          <url>${REPOSITORY_URL}</url>
+        </repository>
+      </repositories>
+
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>maven2</activeProfile>
+    <activeProfile>monacohq</activeProfile>
+  </activeProfiles>
+</settings>

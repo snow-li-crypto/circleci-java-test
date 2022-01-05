@@ -6,12 +6,6 @@ commands:
   checkout-cmd:
     steps:
       - checkout
-      - run:
-          command: |
-            mkdir -p ~/.m2/repository/com/crypto
-            mv ./lib/pay.zip ~/.m2/repository/com/crypto
-            unzip -d ~/.m2/repository/com/crypto  ~/.m2/repository/com/crypto/pay.zip
-
 
 jobs:
   build-and-test:
@@ -27,7 +21,7 @@ jobs:
       - checkout-cmd
       - run:
           name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test
+          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test  -s .circleci/.circleci.settings.xml
 
 
 workflows:
