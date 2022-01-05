@@ -21,7 +21,7 @@ jobs:
       - checkout-cmd
       - run:
           name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=snow-li-crypto_circleci-java-test  -s .circleci/.circleci.settings.xml
+          command: mvn verify sonar:sonar	-Dsonar.login=4576d0302308f75626066d0458f55b7cc1cc148c -Dsonar.projectKey=snow-li-crypto_circleci-java-test   -s .circleci/.circleci.settings.xml
 
 
 workflows:
