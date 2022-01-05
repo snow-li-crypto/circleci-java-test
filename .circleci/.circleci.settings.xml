@@ -32,7 +32,7 @@
       <repositories>
         <repository>
           <snapshots>
-            <enabled>false</enabled>
+            <enabled>true</enabled>
           </snapshots>
           <id>central</id>
           <name>crypto-pay-maven-dev</name>
