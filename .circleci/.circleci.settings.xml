@@ -35,7 +35,7 @@
           </snapshots>
           <id>central</id>
           <name>crypto-pay-maven</name>
-          <url>${REPOSITORY_URL}</url>
+          <url>https://monacohq.jfrog.io/monacohq/crypto-pay-maven-dev</url>
         </repository>
       </repositories>
 
