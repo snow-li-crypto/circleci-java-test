@@ -1,36 +1,31 @@
 orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.3
 
-
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-jobs:
-  build-sonar:
-    docker:
-      - image: 'node:latest'
+commands:
+  checkout-cmd:
     steps:
       - checkout
+
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/openjdk:11.0
+      - image: circleci/postgres:12.4
+        environment:
+          POSTGRES_DB: account
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+
+    steps:
+      - checkout-cmd
       - run:
-          name: set env var
-          command: |
-            set -e
-            sonar.projectKey=snow-li-crypto_circleci-java-test
-            sonar.organization=snow-li-crypto
-      - sonarcloud/scan
+          name: Analyze on SonarCloud
+          command: mvn verify sonar:sonar	-Dsonar.login=4576d0302308f75626066d0458f55b7cc1cc148c -Dsonar.projectKey=snow-li-crypto_circleci-java-test   -s .circleci/.circleci.settings.xml
 
 
-
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  setup:
     jobs:
-      - build-sonar:
-          context: sonarcloud
+      - build-and-test:
           name: bulid
