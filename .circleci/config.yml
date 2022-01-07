@@ -37,6 +37,7 @@ jobs:
   default:
     executor: continuation/default
     steps:
+      - checkout-cmd
       - continuation/continue:
           configuration_path: ./.circleci/config-default.yml
 
