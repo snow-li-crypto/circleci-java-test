@@ -10,6 +10,10 @@ package com.module4;
 public class Module4Service {
 
     public void test() {
+        String s = "";
+        if (s == null) {
+            System.out.println("tdfdf");
+        }
         System.out.println("est");
         String str = null;
     }

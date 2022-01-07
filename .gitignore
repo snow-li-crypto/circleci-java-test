@@ -26,3 +26,5 @@ hs_err_pid*
 /target
 /target/*
 target/suerfire-reports
+/module4/target/
+/module5/target/
