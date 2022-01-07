@@ -15,6 +15,12 @@ jobs:
       - image: 'node:latest'
     steps:
       - checkout
+      - run:
+          name: set env var
+          command: |
+            set -e
+            sonar.projectKey=snow-li-crypto_circleci-java-test
+            sonar.organization=snow-li-crypto
       - sonarcloud/scan
 
 
